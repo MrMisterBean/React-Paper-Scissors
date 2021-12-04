@@ -5,6 +5,9 @@ const App = () => {
   const [userGuess, setUserGuess] = useState('None')
   const [compGuess, setCompGuess] = useState('None')
 
+  const [userScore, setUserScore] = useState(0)
+  const [compScore, setCompScore] = useState(0)
+
   const rps = [
     'rock',
     'paper',
@@ -21,21 +24,28 @@ const App = () => {
     </button>
   )
 
+  const DisplayScore = ({userScore, compScore}) => (
+    <div>
+      You: {userScore} Computer: {compScore} 
+    </div>
+  )
+
   const compRandomChoice = () => setCompGuess(randomChoice(rps))
 
   const guessRock = () => {
     return (
       setUserGuess('rock'),
-      compRandomChoice(),
-      <checkResult userGuess={userGuess} compGuess={compGuess} />
+      compRandomChoice()
     )
   }
+
   const guessPaper = () => {
     return (
       setUserGuess('paper'),
       compRandomChoice()
     )
   }
+
   const guessScissors = () => {
     return (
       setUserGuess('scissors'),
@@ -48,9 +58,9 @@ const App = () => {
   const messageTie = <div>You tie! {userGuess} = {compGuess} </div>
   const messageStart = <div> Shoot! </div>
 
-  const CheckResult = ( {userGuess, compGuess} ) => {
+  const CheckResult = () => {
 
-    if (compGuess === 'None') {
+    if (compGuess === 'None' && userGuess === 'None' ) {
       return messageStart
     }
 
@@ -85,6 +95,7 @@ const App = () => {
 
   return (
     <div>
+      <DisplayScore userScore={userScore} compScore={compScore} />
       <Button onClick={guessRock} text={'rock'} />
       <Button onClick={guessPaper} text={'paper'} />
       <Button onClick={guessScissors} text={'scissors'} />
