@@ -5,8 +5,15 @@ const App = () => {
   const [userGuess, setUserGuess] = useState('None')
   const [compGuess, setCompGuess] = useState('None')
 
-  const [userScore, setUserScore] = useState(0)
-  const [compScore, setCompScore] = useState(0)
+  const [scores, setScores] = useState({
+    user: 0, comp: 0
+  })
+
+  const userWin = () =>
+    setScores({...scores, user: scores.user + 1})
+
+  const userLoss = () =>
+    setScores({...scores, comp: scores.comp + 1})
 
   const rps = [
     'rock',
@@ -95,7 +102,7 @@ const App = () => {
 
   return (
     <div>
-      <DisplayScore userScore={userScore} compScore={compScore} />
+      <DisplayScore userScore={scores.user} compScore={scores.comp} />
       <Button onClick={guessRock} text={'rock'} />
       <Button onClick={guessPaper} text={'paper'} />
       <Button onClick={guessScissors} text={'scissors'} />
