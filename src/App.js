@@ -60,10 +60,18 @@ const App = () => {
     )
   }
 
-  const messageWin = <div>You win! {userGuess} beats {compGuess} </div>
+  const messageWin = () => {
+    this.userWin()
+    return(
+      <div>You win! {userGuess} beats {compGuess} </div>
+    )
+  } 
+
+//  const messageWin = <div>You win! {userGuess} beats {compGuess} </div>
   const messageLoss = <div>You lose ☹️. {userGuess} loses to {compGuess} </div>
   const messageTie = <div>You tie! {userGuess} = {compGuess} </div>
   const messageStart = <div> Shoot! </div>
+  let update = true 
 
   const CheckResult = () => {
 
@@ -77,7 +85,7 @@ const App = () => {
 
     if (userGuess === "rock") {
       if (compGuess === "scissors") {
-        return messageWin
+        return messageWin()
       } else {
         return messageLoss
       }
