@@ -1,11 +1,19 @@
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 button {
-  margin: 25px 5px 20px 20px;
+  flex: 1 1 1;
+  margin: 4% 5px 4% 20px;
   padding: 5%;
-  font-size: 32px;
 }
 
 div {
-  font-size: 42px;
+  text-align: center;
+  align-self: center;
+  font-size: 64px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -15,4 +23,9 @@ strong {
 
 em {
   color: red;
+}
+
+.photo {
+  width: 400px;
+
 }

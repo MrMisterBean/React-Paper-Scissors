@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
 import './App.css'
+import rock from './images/rock.png'
+import paper from './images/paper.png'
+import scissors from './images/scissors.png'
 
 const App = () => {
   const [userGuess, setUserGuess] = useState('None')
@@ -14,12 +17,6 @@ const App = () => {
   const randomChoice = (arr) => {
     return arr[Math.floor(Math.random() * arr.length)]
   }
-
-  const Button = ({onClick, text}) => (
-    <button onClick={onClick}>
-      {text}
-    </button>
-  )
 
   const compRandomChoice = () => setCompGuess(randomChoice(rps))
 
@@ -73,9 +70,9 @@ const App = () => {
   return (
     <div>
       <div class="buttons">
-        <Button onClick={chooseMove('rock')} text={'rock'} />
-        <Button onClick={chooseMove('paper')} text={'paper'} />
-        <Button onClick={chooseMove('scissors')} text={'scissors'} />
+        <button><img className="photo" src={rock} alt="rock" onClick={chooseMove('rock')} /></button>
+        <button><img className="photo" src={paper} alt="rock" onClick={chooseMove('paper')} /></button>
+        <button><img className="photo" src={scissors} alt="rock" onClick={chooseMove('scissors')} /></button>
       </div>
       <CheckResult userGuess={userGuess} compGuess={compGuess} />
     </div>
