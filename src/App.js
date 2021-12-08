@@ -21,12 +21,6 @@ const App = () => {
     </button>
   )
 
-  const DisplayScore = ({userScore, compScore}) => (
-    <div>
-      You: {userScore} Computer: {compScore} 
-    </div>
-  )
-
   const compRandomChoice = () => setCompGuess(randomChoice(rps))
 
   const chooseMove = (move) => () => {
@@ -36,9 +30,9 @@ const App = () => {
     )
   } 
 
-  const messageWin = <div>You win! {userGuess} beats {compGuess} </div>
-  const messageLoss = <div>You lose ☹️. {userGuess} loses to {compGuess} </div>
-  const messageTie = <div>You tie! {userGuess} = {compGuess} </div>
+  const messageWin = <div>You <strong>win!</strong> | {userGuess} beats {compGuess} </div>
+  const messageLoss = <div>You <strong>lose.</strong> | {userGuess} loses to {compGuess} </div>
+  const messageTie = <div>You <strong>tie.</strong> | {userGuess} = {compGuess} </div>
   const messageStart = <div> Shoot! </div>
 
   const CheckResult = () => {
