@@ -9,12 +9,6 @@ const App = () => {
     user: 0, comp: 0
   })
 
-  const userWin = () =>
-    setScores({...scores, user: scores.user + 1})
-
-  const userLoss = () =>
-    setScores({...scores, comp: scores.comp + 1})
-
   const rps = [
     'rock',
     'paper',
@@ -39,39 +33,17 @@ const App = () => {
 
   const compRandomChoice = () => setCompGuess(randomChoice(rps))
 
-  const guessRock = () => {
-    return (
-      setUserGuess('rock'),
-      compRandomChoice()
-    )
-  }
-
-  const guessPaper = () => {
-    return (
-      setUserGuess('paper'),
-      compRandomChoice()
-    )
-  }
-
-  const guessScissors = () => {
-    return (
-      setUserGuess('scissors'),
-      compRandomChoice()
-    )
-  }
-
-  const messageWin = () => {
-    this.userWin()
+  const chooseMove = (move) => () => {
     return(
-      <div>You win! {userGuess} beats {compGuess} </div>
+    setUserGuess(move),
+    compRandomChoice()
     )
   } 
 
-//  const messageWin = <div>You win! {userGuess} beats {compGuess} </div>
+  const messageWin = <div>You win! {userGuess} beats {compGuess} </div>
   const messageLoss = <div>You lose ☹️. {userGuess} loses to {compGuess} </div>
   const messageTie = <div>You tie! {userGuess} = {compGuess} </div>
   const messageStart = <div> Shoot! </div>
-  let update = true 
 
   const CheckResult = () => {
 
@@ -85,7 +57,7 @@ const App = () => {
 
     if (userGuess === "rock") {
       if (compGuess === "scissors") {
-        return messageWin()
+        return messageWin
       } else {
         return messageLoss
       }
@@ -111,9 +83,9 @@ const App = () => {
   return (
     <div>
       <DisplayScore userScore={scores.user} compScore={scores.comp} />
-      <Button onClick={guessRock} text={'rock'} />
-      <Button onClick={guessPaper} text={'paper'} />
-      <Button onClick={guessScissors} text={'scissors'} />
+      <Button onClick={chooseMove('rock')} text={'rock'} />
+      <Button onClick={chooseMove('paper')} text={'paper'} />
+      <Button onClick={chooseMove('scissors')} text={'scissors'} />
       <CheckResult userGuess={userGuess} compGuess={compGuess} />
     </div>
   )
