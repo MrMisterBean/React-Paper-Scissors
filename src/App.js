@@ -31,8 +31,8 @@ const App = () => {
   } 
 
   const messageWin = <div>You <strong>win!</strong> | {userGuess} beats {compGuess} </div>
-  const messageLoss = <div>You <strong>lose.</strong> | {userGuess} loses to {compGuess} </div>
-  const messageTie = <div>You <strong>tie.</strong> | {userGuess} = {compGuess} </div>
+  const messageLoss = <div>You <em>lose.</em> | {userGuess} loses to {compGuess} </div>
+  const messageTie = <div>You tie. | {userGuess} = {compGuess} </div>
   const messageStart = <div> Shoot! </div>
 
   const CheckResult = () => {
@@ -72,9 +72,11 @@ const App = () => {
 
   return (
     <div>
-      <Button onClick={chooseMove('rock')} text={'rock'} />
-      <Button onClick={chooseMove('paper')} text={'paper'} />
-      <Button onClick={chooseMove('scissors')} text={'scissors'} />
+      <div class="buttons">
+        <Button onClick={chooseMove('rock')} text={'rock'} />
+        <Button onClick={chooseMove('paper')} text={'paper'} />
+        <Button onClick={chooseMove('scissors')} text={'scissors'} />
+      </div>
       <CheckResult userGuess={userGuess} compGuess={compGuess} />
     </div>
   )
